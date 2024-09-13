@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kmong Slider</title>
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- Slick Slider Css Link -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <!-- Jquery  -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Css file -->
+  <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="slider-wrapper">
+      <div class="slider center">
+        <a href="#" class="clip"><img src="./assets/media/4.jpg" alt="Image 1" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/2.jpg" alt="Image 2" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/4.jpg" alt="Image 3" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/2.jpg" alt="Image 4" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/4.jpg" alt="Image 5" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/2.jpg" alt="Image 6" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/4.jpg" alt="Image 7" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/2.jpg" alt="Image 8" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/4.jpg" alt="Image 9" width="700px"></a>
+        <a href="#" class="clip"><img src="./assets/media/2.jpg" alt="Image 10" width="700px"></a>
+      </div>
+      <div class="controls">
+        <div class="counter">1 / 10</div>
+        <button class="pause-btn"><i class="ri-pause-fill"></i></button>
+        <button class="play-btn"><i class="ri-play-fill"></i></button>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $(document).ready(function () {
+      var $slider = $('.center');
+      var $counter = $('.counter');
+      var $pauseBtn = $('.pause-btn');
+      var $playBtn = $('.play-btn');
+      var slider;
+
+      // COUNTER FUNCTION
+
+      $slider.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        var totalSlides = slick.slideCount;
+        $counter.text(i + ' / ' + totalSlides);
+
+      });
+
+      // SLICK SLIDER JS
+
+      slider = $slider.slick({
+        centerMode: true,
+        infinite: true,
+        centerPadding: '0px',
+        speed: 500,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        variableWidth: true,
+        prevArrow: '<button class="slick-prev"><i class="ri-arrow-left-s-line"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ri-arrow-right-s-line"></i></button>'
+      });
+
+      // PAUSE BUTTON
+
+      $pauseBtn.on('click', function () {
+        slider.slick('slickPause');
+        $(this).hide();
+        $playBtn.show();
+      });
+
+      // PLAY BUTTON
+
+      $playBtn.on('click', function () {
+        slider.slick('slickPlay');
+        $(this).hide();
+        $pauseBtn.show();
+      });
+    });
+
+  </script>
+
+  <!-- Slick Slider JS File  -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <!-- JS File  -->
+  <script src="./assets/script/script.js"></script>
+</body>
+
+</html>
